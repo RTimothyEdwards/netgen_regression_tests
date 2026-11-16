@@ -1,0 +1,9 @@
+* Schematic:  "nfet" and "rpoly" are not defined
+.subckt chain a b g
+X1 a g b g nfet W=2 L=1
+.ends
+
+.subckt top in out mid g
+X1 in mid g chain
+X2 mid out g rpoly L=10
+.ends

@@ -21,25 +21,38 @@
 #   IGNORE_VERSION  If set, run tests even if netgen is older than the
 #                   version the test requires (for testing a build before
 #                   its version number has been updated).
+#   MEMLIMIT        Memory limit for each run of netgen, in kilobytes
+#                   (ulimit -v).  Default 4000000 (4 GB).  Not applied
+#                   under VALGRIND.  A run that exceeds it is stopped
+#                   instead of using up the machine's memory.
+#   TIMELIMIT       Time limit for each run of netgen, in seconds.  Default
+#                   300 (multiplied by 10 under VALGRIND).
 
 : ${NETGEN:=netgen}
+: ${MEMLIMIT:=4000000}
+: ${TIMELIMIT:=300}
 
 WORK=${TESTDIR}/work
 rm -rf ${WORK}
 mkdir -p ${WORK}
 
 # Run netgen in batch mode on a Tcl script.  All output goes to stdout so
-# that it can be filtered or saved to a log.  The exit status is netgen's.
+# that it can be filtered or saved to a log.  The exit status is netgen's,
+# or 124 if the time limit was reached.  The run is limited in memory and
+# time (see MEMLIMIT and TIMELIMIT), so that a test that makes netgen loop
+# without end fails instead of using up the machine.
 
 run_netgen() {
     if [ -n "${VALGRIND}" ]; then
 	# The netgen command is normally a shell script, so follow it into
 	# the programs it runs.
-	valgrind --trace-children=yes --num-callers=30 \
+	timeout $((TIMELIMIT * 10)) \
+		valgrind --trace-children=yes --num-callers=30 \
 		--log-file=${WORK}/valgrind.%p.log \
 		${NETGEN} -batch source "$1" < /dev/null 2>&1
     else
-	${NETGEN} -batch source "$1" < /dev/null 2>&1
+	( ulimit -v ${MEMLIMIT}
+	  timeout ${TIMELIMIT} ${NETGEN} -batch source "$1" < /dev/null 2>&1 )
     fi
 }
 
@@ -68,7 +81,7 @@ check_valgrind() {
 # harmless in batch mode).  Accept either.
 
 netgen_version() {
-    ${NETGEN} -batch --version < /dev/null 2>&1 |
+    ( ulimit -v ${MEMLIMIT}; timeout 60 ${NETGEN} -batch --version < /dev/null 2>&1 ) |
 	    sed -n -e 's/^\([0-9][0-9]*\.[0-9][0-9.]*\)$/\1/p' \
 		-e 's/^Netgen \([0-9][0-9.]*\) .*/\1/p' | head -n 1
 }

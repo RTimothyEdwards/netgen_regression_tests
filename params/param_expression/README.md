@@ -12,7 +12,7 @@ The expression is evaluated in the scope where the parameter is defined.
   global `vdd` (1.8).
 
 A second netlist, `circular.spice`, defines `.param x='y' y='x'`.  Netgen
-must report the circular definition and finish, not loop forever.
+must report the circular definition (once) and finish, not loop forever.
 
 Netgen used to accept only plain numbers as `.param` values.  Fixed in
 netgen 1.5.330.

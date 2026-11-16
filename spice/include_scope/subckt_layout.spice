@@ -1,0 +1,6 @@
+* Layout for subckt_include.spice
+.subckt top a b c d g
+M1 a g b g nmos W=1 L=1
+M2 b g c g nmos W=3 L=1
+M3 c g d g nmos W=3 L=1
+.ends

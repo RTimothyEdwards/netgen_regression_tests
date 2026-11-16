@@ -1,0 +1,4 @@
+* Library included at the top level
+.subckt inv a y g
+M1 y a g g nmos W=1 L=1
+.ends

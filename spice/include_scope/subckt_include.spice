@@ -1,0 +1,7 @@
+* Schematic:  an .include inside a subcircuit
+.param w2=99
+.subckt top a b c d g
+M1 a g b g nmos W=1 L=1
+.include subckt_part.spice
+M3 c g d g nmos W='w2' L=1
+.ends

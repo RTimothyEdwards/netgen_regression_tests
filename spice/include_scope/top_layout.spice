@@ -1,0 +1,5 @@
+* Layout for top_include.spice
+M1 a g b g nmos W=2 L=1
+M2 c b g g nmos W=1 L=1
+M3 c g d g nmos W=3 L=1
+.end

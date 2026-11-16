@@ -1,0 +1,3 @@
+* Included from inside subcircuit "top"
+.param w2=3
+M2 b g c g nmos W='w2' L=1

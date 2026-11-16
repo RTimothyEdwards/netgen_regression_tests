@@ -31,6 +31,8 @@ Environment variables:
 | `NETGEN`         | `netgen` | Command used to run netgen |
 | `KEEPWORK`       | (unset)  | Keep each test's `work/` directory even if the test passes |
 | `VALGRIND`       | (unset)  | Run netgen under valgrind;  a test also fails if valgrind reports memory errors (reports are kept in `work/`).  Much slower:  for occasional runs.  Note that netgen allocates memory through Tcl, and a threaded Tcl manages small blocks itself, so valgrind does not see all errors. |
+| `MEMLIMIT`       | `4000000` | Memory limit (kilobytes, `ulimit -v`) for each run of netgen, so that a test that makes netgen loop without end fails instead of using up the machine's memory.  Not applied under `VALGRIND`. |
+| `TIMELIMIT`      | `300`    | Time limit (seconds) for each run of netgen (10 times as long under `VALGRIND`) |
 | `IGNORE_VERSION` | (unset)  | Run tests that need a newer version of netgen than the one being tested, instead of skipping them (for testing a fix before the version number has been updated) |
 | `JOBS`           | `20`     | Number of tests to run at the same time (`-j` overrides it) |
 
@@ -84,8 +86,11 @@ run_tests.sh          Runs all tests (any directory containing run.sh)
 common/common.sh      Shared setup and helper functions for run.sh scripts
 blackbox/             Cells compared as black boxes
     one_sided_summary/  Listing of cells with contents in only one netlist
+    pin_names/        Black box pins must match by name
+    placeholder_pins/ Pins of placeholder (undefined) devices are compared
 params/               SPICE parameters
     elaborate_expressions/  Defaults and local parameters that are expressions
+    elaborate_flatten/  "flatten class" applies to copies of a subcircuit
     elaborate_nested/  Parameters passed through two levels of subcircuits
     elaborate_single/ Subcircuit given one set of parameters (resolved in place)
     elaborate_standalone/  Copied subcircuit compared on its own (defaults)
@@ -100,7 +105,10 @@ results/              Final result reported by "lvs"
     net_mismatch_message/  A net mismatch is reported as such
     pin_mismatch_message/  A pin-only mismatch is reported as such
 spice/                SPICE netlist reading
+    equals_spacing/   Spaces around "=" in properties and parameters
+    include_scope/    Files read with .include are part of the including file
     source_instance_names/  Instance names of V, I, and E sources
+    unresolved_expression/  Unresolved expressions reported as such
 startup/              Starting netgen
     version_option/   "netgen --version" prints the version number
 verilog/              Verilog netlists

@@ -20,14 +20,14 @@ expect_no_line comp.out "unresolved" \
 cat > circular.tcl << EOF
 readnet spice ${TESTDIR}/circular.spice
 EOF
-timeout 60 bash -c "$(declare -f run_netgen); NETGEN='${NETGEN}' WORK='${WORK}' VALGRIND='${VALGRIND}' run_netgen circular.tcl" > circular.log
+TIMELIMIT=60 run_netgen circular.tcl > circular.log
 code=$?
 if [ ${code} -eq 124 ]; then
     echo "  FAIL:  circular parameter definition (netgen did not finish)"
     status=1
 else
-    expect_line circular.log "circular definition" \
-	    "circular parameter definition is reported"
+    expect_count circular.log "circular definition" 1 \
+	    "circular parameter definition is reported (once)"
 fi
 
 finish ${status}

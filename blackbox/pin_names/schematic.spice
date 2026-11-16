@@ -1,0 +1,9 @@
+* Schematic:  black box "blk" with pins x and y (same order and wiring)
+.subckt blk x y
+.ends
+
+.subckt top in out mid vss
+X1 in mid blk
+X2 mid out blk
+M1 out in vss vss nmos W=1 L=1
+.ends

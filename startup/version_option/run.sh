@@ -9,7 +9,8 @@ require_netgen_version 1.5.330
 cd ${WORK}
 
 # Without -batch, an older netgen would start the console, so limit the time
-timeout 60 ${NETGEN} --version < /dev/null > version.out 2> version.err
+( ulimit -v ${MEMLIMIT}
+  timeout 60 ${NETGEN} --version < /dev/null > version.out 2> version.err )
 code=$?
 
 if [ ${code} -eq 0 ]; then

@@ -1,0 +1,10 @@
+* Schematic:  "cell" is given two sets of parameters
+.subckt top a b c d g
+X1 a b g cell W=2
+X2 b c g cell W=3
+X3 c d g cell W=2
+.ends
+
+.subckt cell a b g W=1
+M1 a g b g nmos W='W' L=1
+.ends

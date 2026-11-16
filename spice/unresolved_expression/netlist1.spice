@@ -1,0 +1,7 @@
+* Netlist with properties that use undefined parameters
+.subckt top p n q r d g s
+V1 p n pulse(0 {undef} 2u 0.1n 0.1n 1 1.1 )
+V2 q n {undef2}
+M1 d g s s nmos W='undef3' L=1
+M2 d g r s nmos W='undef3*2' L=1
+.ends

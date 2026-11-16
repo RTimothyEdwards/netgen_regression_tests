@@ -1,0 +1,6 @@
+* Schematic:  top-level devices before and after an .include
+M1 a g b g nmos W=2 L=1
+.include lib.spice
+X1 b c g inv
+M3 c g d g nmos W=3 L=1
+.end
