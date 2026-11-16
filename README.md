@@ -85,6 +85,11 @@ common/common.sh      Shared setup and helper functions for run.sh scripts
 blackbox/             Cells compared as black boxes
     one_sided_summary/  Listing of cells with contents in only one netlist
 params/               SPICE parameters
+    elaborate_expressions/  Defaults and local parameters that are expressions
+    elaborate_nested/  Parameters passed through two levels of subcircuits
+    elaborate_single/ Subcircuit given one set of parameters (resolved in place)
+    elaborate_standalone/  Copied subcircuit compared on its own (defaults)
+    elaborate_variants/  Subcircuit given several sets (copied for each set)
     local_param/      .param inside a subcircuit is local to it
     param_before_definition/  Parameters used before they are defined
     param_expression/ .param values that are expressions;  circular definitions
@@ -94,6 +99,8 @@ pins/                 Pin matching
 results/              Final result reported by "lvs"
     net_mismatch_message/  A net mismatch is reported as such
     pin_mismatch_message/  A pin-only mismatch is reported as such
+spice/                SPICE netlist reading
+    source_instance_names/  Instance names of V, I, and E sources
 verilog/              Verilog netlists
     cdl_escaped_bus/  Verilog instance of a CDL cell (escaped names, <> buses)
     unordered_bus_pins/  Bus connected to a cell with unordered bus pins

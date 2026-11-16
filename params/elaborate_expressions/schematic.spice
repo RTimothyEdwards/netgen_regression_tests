@@ -1,0 +1,14 @@
+* Schematic:  defaults and local parameters that are expressions
+.param scale=2
+
+.subckt cell a b c g W=1 L='W*2'
+M1 a g b g nmos W='w2' L='L'
+M2 b g c g nmos W={w3} L=1
+.param w2='W*scale'
+.param w3={W}
+.ends
+
+.subckt top a b c d e g
+X1 a b c g cell W=3
+X2 c d e g cell
+.ends

@@ -1,0 +1,9 @@
+* Layout
+.subckt cell a b g
+M1 a g b g nmos W=2 L=1
+.ends
+
+.subckt top a b c g
+X1 a b g cell
+X2 b c g cell
+.ends

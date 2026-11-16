@@ -1,0 +1,8 @@
+* Layout:  Vb has a different value
+.subckt top p n q r s t
+Va p n 1.8
+Vb q n 2.5
+Ia r n 1m
+Ea s n p n 2
+M1 t p n n nmos W=1 L=1
+.ends

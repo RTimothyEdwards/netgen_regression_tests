@@ -1,0 +1,7 @@
+* Layout
+.subckt top a b c d e g
+M1 a g b g nmos W=2 L=1
+M2 b g c g nmos W=3 L=1
+M3 c g d g nmos W=4 L=1
+M4 d g e g nmos W=6 L=1
+.ends

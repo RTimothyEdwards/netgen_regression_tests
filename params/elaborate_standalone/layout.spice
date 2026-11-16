@@ -1,0 +1,4 @@
+* Layout:  "cell" with the default parameters
+.subckt cell a b g
+M1 a g b g nmos W=1 L=1
+.ends
