@@ -1,0 +1,7 @@
+* Layout:  L = 3, 6 (c1) and 10, 20 (c2)
+.subckt top a c g
+M1 a g w1 g nmos W=1 L=3
+M2 w1 g b g nmos W=1 L=6
+M3 b g w2 g nmos W=1 L=10
+M4 w2 g c g nmos W=1 L=20
+.ends

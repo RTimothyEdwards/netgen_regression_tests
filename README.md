@@ -113,5 +113,6 @@ startup/              Starting netgen
     version_option/   "netgen --version" prints the version number
 verilog/              Verilog netlists
     cdl_escaped_bus/  Verilog instance of a CDL cell (escaped names, <> buses)
+    parameters/       Parameters passed through verilog modules
     unordered_bus_pins/  Bus connected to a cell with unordered bus pins
 ```
