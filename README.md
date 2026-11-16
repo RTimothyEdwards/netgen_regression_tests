@@ -101,6 +101,8 @@ results/              Final result reported by "lvs"
     pin_mismatch_message/  A pin-only mismatch is reported as such
 spice/                SPICE netlist reading
     source_instance_names/  Instance names of V, I, and E sources
+startup/              Starting netgen
+    version_option/   "netgen --version" prints the version number
 verilog/              Verilog netlists
     cdl_escaped_bus/  Verilog instance of a CDL cell (escaped names, <> buses)
     unordered_bus_pins/  Bus connected to a cell with unordered bus pins

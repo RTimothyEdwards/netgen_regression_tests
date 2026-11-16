@@ -62,11 +62,15 @@ check_valgrind() {
 }
 
 # Print the version of netgen (e.g., "1.5.330"), or nothing if unknown.
+# "netgen --version" prints only the version number (netgen 1.5.330 and
+# later);  older versions print a banner "Netgen <version> compiled on
+# <date>" when started, and then an error for "--version" (which is
+# harmless in batch mode).  Accept either.
 
 netgen_version() {
-    echo "exit" > ${WORK}/version.tcl
-    ${NETGEN} -batch source ${WORK}/version.tcl < /dev/null 2>&1 |
-	    sed -n 's/^Netgen \([0-9][0-9.]*\).*/\1/p' | head -n 1
+    ${NETGEN} -batch --version < /dev/null 2>&1 |
+	    sed -n -e 's/^\([0-9][0-9]*\.[0-9][0-9.]*\)$/\1/p' \
+		-e 's/^Netgen \([0-9][0-9.]*\) .*/\1/p' | head -n 1
 }
 
 # Skip the test (exit code 77) if netgen is older than the given version
