@@ -1,0 +1,7 @@
+* Layout
+.subckt mem A<1> A<0> D VDD! VSS!
+.ends
+
+.subckt top x[0] x[1] d vdd vss
+X1 x[1] x[0] d vdd vss mem
+.ends

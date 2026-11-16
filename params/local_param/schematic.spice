@@ -1,0 +1,12 @@
+* A .param inside a subcircuit is local to the subcircuit
+.param vdd=1.8
+
+.subckt stage m p g
+.param vdd=3.3
+M1 m g p g nmos W='vdd' L=1
+.ends
+
+.subckt top a b c g
+X1 a b g stage
+M2 b g c g nmos W='vdd' L=1
+.ends

@@ -1,0 +1,8 @@
+* Schematic:  net "e" has been merged into net "b"
+.subckt top a b c d e g
+M0 b b g g nmos W=1 L=1
+M1 h c b g nmos W=1 L=1
+M2 b a g g nmos W=1 L=1
+M3 b a d g nmos W=1 L=1
+M4 f b c g nmos W=1 L=1
+.ends

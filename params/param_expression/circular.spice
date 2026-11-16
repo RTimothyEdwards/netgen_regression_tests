@@ -1,0 +1,5 @@
+* Circular parameter definition
+.param x='y' y='x'
+.subckt top d g s
+M1 d g s g nmos W='x' L=1
+.ends

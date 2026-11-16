@@ -1,0 +1,5 @@
+* Layout with literal values
+.subckt top a b c g
+M1 a g b g nmos W=3.3 L=1
+M2 b g c g nmos W=1.8 L=1
+.ends

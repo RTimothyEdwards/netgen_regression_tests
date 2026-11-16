@@ -1,0 +1,12 @@
+* Parameters used before they are defined
+.subckt stage m p g
+M1 m g p g nmos W='space' L=1
+.param space=7
+.ends
+
+.subckt top a b c g
+X1 a b g stage
+M2 b g c g nmos W='late' L=1
+.ends
+
+.param late=5

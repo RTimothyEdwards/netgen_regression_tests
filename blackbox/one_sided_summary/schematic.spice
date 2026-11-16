@@ -1,0 +1,17 @@
+* Schematic:  blk2 is empty
+.subckt blk1 a b
+M1 a b b b nmos W=1 L=1
+.ends
+
+.subckt blk2 a b
+.ends
+
+.subckt blk3 a b
+.ends
+
+.subckt top in out mid mid2 vss
+X1 in mid blk1
+X2 mid out blk2
+X3 out mid2 blk3
+M4 out in vss vss nmos W=1 L=1
+.ends

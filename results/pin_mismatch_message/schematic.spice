@@ -1,0 +1,5 @@
+* Schematic:  the same inverter, but the output port is named "z"
+.subckt top in z vdd vss
+M1 z in vdd vdd pmos W=2 L=1
+M2 z in vss vss nmos W=1 L=1
+.ends

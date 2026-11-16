@@ -1,0 +1,6 @@
+* Layout:  three separate input nets
+.subckt top x1 x2 x3 y g
+M1 y x1 g g nmos W=1 L=1
+M2 y x2 g g nmos W=1 L=1
+M3 y x3 g g nmos W=1 L=1
+.ends

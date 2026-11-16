@@ -1,0 +1,7 @@
+* Schematic:  the gates of M2 and M3 are both connected to x2
+.subckt top x1 x2 x3 y g
+M1 y x1 g g nmos W=1 L=1
+M2 y x2 g g nmos W=1 L=1
+M3 y x2 g g nmos W=1 L=1
+M4 x3 x3 x3 g nmos W=1 L=1
+.ends

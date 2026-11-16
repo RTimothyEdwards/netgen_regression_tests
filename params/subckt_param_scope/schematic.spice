@@ -1,0 +1,11 @@
+* A .subckt parameter must take precedence over a global .param
+.param L=99
+
+.subckt top a b c g
+X1 a b g chain
+M2 b g c g nmos W='L' L=1
+.ends
+
+.subckt chain m p g L=12
+M1 m g p g nmos W='L' L=1
+.ends
