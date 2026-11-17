@@ -116,5 +116,6 @@ startup/              Starting netgen
 verilog/              Verilog netlists
     cdl_escaped_bus/  Verilog instance of a CDL cell (escaped names, <> buses)
     parameters/       Parameters passed through verilog modules
+    sized_constants/  Parameter values given as based constants (32'd10)
     unordered_bus_pins/  Bus connected to a cell with unordered bus pins
 ```
