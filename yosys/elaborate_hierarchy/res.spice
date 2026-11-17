@@ -1,0 +1,4 @@
+* Leaf cell with a parameter
+.subckt res a b g L=1
+M1 a g b g nmos W=1 L='L'
+.ends

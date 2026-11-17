@@ -19,5 +19,13 @@ try native -param {ID 8'ha5} -frontend verilog
 try 5a -param {ID 8'h5a}
 try default
 
+# Without stubs, the pins of the cells are taken from their instances
+set v [netgen::yosys_elaborate $dir/id_prog.v id_prog -define USE_POWER_PINS \
+		-param {ID 8'ha5}]
+puts "nostubs output: \"$v\""
+if {$v != {}} {
+   lvs "$v id_prog" "$dir/gl_a5.v id_prog" nosetup nostubs.out
+}
+
 # Errors are reported, and an empty string returned
-puts "nostubs output: \"[netgen::yosys_elaborate $dir/id_prog.v id_prog]\""
+puts "error output: \"[netgen::yosys_elaborate $dir/id_prog.v no_such_module]\""

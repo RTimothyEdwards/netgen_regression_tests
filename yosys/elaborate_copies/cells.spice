@@ -1,0 +1,7 @@
+* Cell library (empty subcircuits, compared as black boxes)
+.subckt tieh VDD VSS H
+.ends
+.subckt tiel VDD VSS L
+.ends
+.subckt decap VDD VSS
+.ends

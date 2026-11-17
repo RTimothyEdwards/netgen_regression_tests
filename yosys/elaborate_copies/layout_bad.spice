@@ -1,0 +1,64 @@
+* Layout of chip with one bit wrong:  b[2] is tied low instead of high.
+.subckt tieh VDD VSS H
+.ends
+.subckt tiel VDD VSS L
+.ends
+.subckt decap VDD VSS
+.ends
+
+.subckt chip VDD VSS a[0] a[1] a[2] a[3] a[4] a[5] a[6] a[7] b[0] b[1] b[2] b[3] b[4] b[5] b[6] b[7] c[0] c[1] c[2] c[3] c[4] c[5] c[6] c[7]
+X0 VDD VSS a[0] tieh
+X1 VDD VSS a_ncl0 tiel
+X2 VDD VSS a_nch1 tieh
+X3 VDD VSS a[1] tiel
+X4 VDD VSS a[2] tieh
+X5 VDD VSS a_ncl2 tiel
+X6 VDD VSS a_nch3 tieh
+X7 VDD VSS a[3] tiel
+X8 VDD VSS a_nch4 tieh
+X9 VDD VSS a[4] tiel
+X10 VDD VSS a[5] tieh
+X11 VDD VSS a_ncl5 tiel
+X12 VDD VSS a_nch6 tieh
+X13 VDD VSS a[6] tiel
+X14 VDD VSS a[7] tieh
+X15 VDD VSS a_ncl7 tiel
+X16 VDD VSS decap
+X17 VDD VSS decap
+X18 VDD VSS b_nch0 tieh
+X19 VDD VSS b[0] tiel
+X20 VDD VSS b_nch1 tieh
+X21 VDD VSS b[1] tiel
+X22 VDD VSS b_nch2 tieh
+X23 VDD VSS b[2] tiel
+X24 VDD VSS b[3] tieh
+X25 VDD VSS b_ncl3 tiel
+X26 VDD VSS b[4] tieh
+X27 VDD VSS b_ncl4 tiel
+X28 VDD VSS b[5] tieh
+X29 VDD VSS b_ncl5 tiel
+X30 VDD VSS b_nch6 tieh
+X31 VDD VSS b[6] tiel
+X32 VDD VSS b_nch7 tieh
+X33 VDD VSS b[7] tiel
+X34 VDD VSS decap
+X35 VDD VSS decap
+X36 VDD VSS c[0] tieh
+X37 VDD VSS c_ncl0 tiel
+X38 VDD VSS c[1] tieh
+X39 VDD VSS c_ncl1 tiel
+X40 VDD VSS c[2] tieh
+X41 VDD VSS c_ncl2 tiel
+X42 VDD VSS c[3] tieh
+X43 VDD VSS c_ncl3 tiel
+X44 VDD VSS c_nch4 tieh
+X45 VDD VSS c[4] tiel
+X46 VDD VSS c_nch5 tieh
+X47 VDD VSS c[5] tiel
+X48 VDD VSS c_nch6 tieh
+X49 VDD VSS c[6] tiel
+X50 VDD VSS c_nch7 tieh
+X51 VDD VSS c[7] tiel
+X52 VDD VSS decap
+X53 VDD VSS decap
+.ends

@@ -18,8 +18,10 @@ against `gl_a5.v`, a gate-level netlist for `ID = 8'ha5`:
   matching pins.)
 
 The cells are given to yosys as black boxes (`stubs.v`).  Without them,
-yosys cannot elaborate the module, and the procedure must report the error
-and return an empty string.
+the procedure must find that the cells are not defined, and take their
+pins from their instances (as netgen does for placeholder cells), and the
+result must still match.  An error (here, a module that does not exist)
+must be reported, and an empty string returned.
 
 The unused tie cells and the decap cells (included because `LVS` is
 defined) have outputs that are not used or no connections at all;  they

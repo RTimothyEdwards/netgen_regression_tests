@@ -22,9 +22,13 @@ for v in 5a default; do
     expect_no_line ${v}.out "^Final result: Circuits match" \
 	    "${v}:  elaborated netlist (different ID) does not match"
 done
-expect_line lvs.log '^nostubs output: ""$' \
-	"without stubs, an empty string is returned"
-expect_line lvs.log "unknown module 'tieh'" \
-	"without stubs, the yosys error is reported"
+expect_line lvs.log "^Cells not defined .*: tieh, tiel, decap" \
+	"without stubs, the cells are found to be undefined"
+expect_line nostubs.out "^Final result: Circuits match uniquely" \
+	"without stubs (pins taken from instances), netlists match"
+expect_line lvs.log '^error output: ""$' \
+	"on an error, an empty string is returned"
+expect_line lvs.log "'no_such_module' is not a valid top-level module" \
+	"the yosys error is reported"
 
 finish ${status}

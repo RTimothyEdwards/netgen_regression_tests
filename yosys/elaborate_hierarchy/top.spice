@@ -1,0 +1,5 @@
+* top as a SPICE netlist, using the verilog module "mid" (modules.v) with N=3
+* (the pins of mid are a, b[3], b[2], b[1], b[0], and g)
+.subckt top a b[0] b[1] b[2] b[3] g
+Xm1 a b[3] b[2] b[1] b[0] g mid N=3
+.ends

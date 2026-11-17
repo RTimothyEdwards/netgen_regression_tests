@@ -119,6 +119,9 @@ verilog/              Verilog netlists
     parameters/       Parameters passed through verilog modules
     sized_constants/  Parameter values given as based constants (32'd10)
     unordered_bus_pins/  Bus connected to a cell with unordered bus pins
+    unreadable_module/  Module netgen cannot read (yosys not used)
 yosys/                Using yosys to elaborate verilog
+    elaborate_copies/  Copies made by yosys for each set of parameters
+    elaborate_hierarchy/  Module elaborated by yosys within a hierarchy
     elaborate_proc/   The netgen::yosys_elaborate procedure
 ```
