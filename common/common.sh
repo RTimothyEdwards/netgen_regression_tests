@@ -27,6 +27,9 @@
 #                   instead of using up the machine's memory.
 #   TIMELIMIT       Time limit for each run of netgen, in seconds.  Default
 #                   300 (multiplied by 10 under VALGRIND).
+#   YOSYS           Command used to run yosys, for tests that use it.
+#                   Default "yosys".  Tests that need yosys are skipped if
+#                   it is not found or is older than version 0.67.
 
 : ${NETGEN:=netgen}
 : ${MEMLIMIT:=4000000}
@@ -104,6 +107,34 @@ require_netgen_version() {
 	    return
 	fi
 	echo "SKIP: $(basename ${TESTDIR}) needs netgen $1 (this is ${have})"
+	exit 77
+    fi
+}
+
+# Skip the test (exit code 77) unless yosys (the command in ${YOSYS}) is
+# version 0.67 or newer and has the "read_slang" command.  The test's Tcl
+# script should give netgen the same command:
+#   if {[info exists ::env(YOSYS)]} {set netgen::yosys_command $::env(YOSYS)}
+# Also sets TMPDIR to the work directory, where netgen puts the files it
+# makes for yosys, so that the test writes nothing outside its directory.
+
+require_yosys() {
+    local vers
+    : ${YOSYS:=yosys}
+    export YOSYS
+    export TMPDIR=${WORK}
+    if ! command -v ${YOSYS} > /dev/null 2>&1; then
+	echo "SKIP: $(basename ${TESTDIR}) needs yosys (\"${YOSYS}\" not found)"
+	exit 77
+    fi
+    vers=$(${YOSYS} -V 2>/dev/null | sed -n 's/^Yosys \([0-9]*\.[0-9]*\).*/\1/p')
+    if [ -z "${vers}" ] || \
+	    [ "$(printf '%s\n%s\n' 0.67 "${vers}" | sort -V | head -n 1)" != "0.67" ]; then
+	echo "SKIP: $(basename ${TESTDIR}) needs yosys 0.67 or newer (this is ${vers:-unknown})"
+	exit 77
+    fi
+    if ! ${YOSYS} -p "help read_slang" 2>&1 | grep -q "read_slang \[options\]"; then
+	echo "SKIP: $(basename ${TESTDIR}) needs yosys with the \"read_slang\" command"
 	exit 77
     fi
 }

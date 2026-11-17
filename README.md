@@ -35,6 +35,7 @@ Environment variables:
 | `TIMELIMIT`      | `300`    | Time limit (seconds) for each run of netgen (10 times as long under `VALGRIND`) |
 | `IGNORE_VERSION` | (unset)  | Run tests that need a newer version of netgen than the one being tested, instead of skipping them (for testing a fix before the version number has been updated) |
 | `JOBS`           | `20`     | Number of tests to run at the same time (`-j` overrides it) |
+| `YOSYS`          | `yosys`  | Command used to run yosys.  Tests that use yosys are skipped if it is not found, is older than version 0.67, or does not have the `read_slang` command. |
 
 To test a build of netgen without installing it over an existing
 installation, configure it with `./configure --prefix=<dir>`, then `make`
@@ -118,4 +119,6 @@ verilog/              Verilog netlists
     parameters/       Parameters passed through verilog modules
     sized_constants/  Parameter values given as based constants (32'd10)
     unordered_bus_pins/  Bus connected to a cell with unordered bus pins
+yosys/                Using yosys to elaborate verilog
+    elaborate_proc/   The netgen::yosys_elaborate procedure
 ```
