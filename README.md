@@ -88,6 +88,8 @@ blackbox/             Cells compared as black boxes
     one_sided_summary/  Listing of cells with contents in only one netlist
     pin_names/        Black box pins must match by name
     placeholder_pins/ Pins of placeholder (undefined) devices are compared
+devices/              Device and instance matching
+    pinless_cells/    Merged cells that have no pins
 params/               SPICE parameters
     elaborate_expressions/  Defaults and local parameters that are expressions
     elaborate_flatten/  "flatten class" applies to copies of a subcircuit
