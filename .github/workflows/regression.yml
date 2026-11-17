@@ -56,9 +56,18 @@ jobs:
         run: |
           # Install under a prefix, so that the netgen command finds this
           # build's library and scripts without needing CAD_ROOT.
-          ./configure --prefix=${GITHUB_WORKSPACE}/install
+          # GCC 15 (Ubuntu 26.04) compiles C23 by default, which netgen's
+          # source does not yet support, so use C17 for now.
+          ./configure --prefix=${GITHUB_WORKSPACE}/install CFLAGS="-g -std=gnu17"
           make -j$(nproc)
           make install
+          # Older versions of netgen's makefiles do not report a failed
+          # build, so check that netgen was built and installed.
+          if [ ! -f ${GITHUB_WORKSPACE}/install/lib/netgen/tcl/tclnetgen.so ]; then
+            echo "::error::netgen was not built (see the errors below)"
+            grep -B2 -A5 -E 'error|Error' make.log | head -100
+            exit 1
+          fi
 
       - name: Run the regression tests
         env:
