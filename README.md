@@ -85,6 +85,8 @@ describing what it checks and why.
 .github/workflows/    GitHub workflows (see above)
 run_tests.sh          Runs all tests (any directory containing run.sh)
 common/common.sh      Shared setup and helper functions for run.sh scripts
+commands/            Tcl command options
+    option_table_cache/  Cached options remain local to their command table
 blackbox/             Cells compared as black boxes
     one_sided_summary/  Listing of cells with contents in only one netlist
     pin_names/        Black box pins must match by name
