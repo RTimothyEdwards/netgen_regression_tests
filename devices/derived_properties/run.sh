@@ -4,6 +4,7 @@
 
 TESTDIR=$(cd "$(dirname "$0")" && pwd)
 source "${TESTDIR}/../../common/common.sh"
+require_netgen_version 1.5.332
 
 # Before this draft is merged, add require_netgen_version with the first
 # released version containing the source fix for netgen issue #113.

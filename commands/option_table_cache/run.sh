@@ -3,6 +3,7 @@
 
 TESTDIR=$(cd "$(dirname "$0")" && pwd)
 source "${TESTDIR}/../../common/common.sh"
+require_netgen_version 1.5.332
 
 # Add require_netgen_version with the actual first fixed release before
 # merging this companion test.  See README.md.
