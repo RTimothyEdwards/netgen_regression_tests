@@ -90,6 +90,7 @@ blackbox/             Cells compared as black boxes
     pin_names/        Black box pins must match by name
     placeholder_pins/ Pins of placeholder (undefined) devices are compared
 devices/              Device and instance matching
+    derived_properties/ Derived area/perimeter values and per-instance state
     pinless_cells/    Merged cells that have no pins
 params/               SPICE parameters
     elaborate_expressions/  Defaults and local parameters that are expressions
