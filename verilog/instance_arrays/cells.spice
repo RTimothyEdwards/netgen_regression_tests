@@ -1,0 +1,5 @@
+* Cells instanced by top.v
+.subckt sub2 A[1] A[0] B
+.ends
+.subckt sub1 A B
+.ends

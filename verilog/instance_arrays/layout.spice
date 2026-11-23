@@ -1,0 +1,29 @@
+* Expected connections of top.v
+.subckt sub2 A[1] A[0] B
+.ends
+.subckt sub1 A B
+.ends
+
+.subckt top x[5] x[4] x[3] x[2] x[1] x[0] y[0] y[1] y[2] y[3]
++ p[3] p[2] p[1] p[0] q[3] q[2] q[1] q[0] w[1] w[0] c[1] c[0] d[0] d[1] s b
+X1a x[5] x[4] b sub2
+X1b x[3] x[2] b sub2
+X1c x[1] x[0] b sub2
+X2a y[0] y[1] b sub2
+X2b y[2] y[3] b sub2
+X3a p[3] p[2] b sub2
+X3b p[1] p[0] b sub2
+X4a q[3] q[2] b sub2
+X4b q[1] q[0] b sub2
+X5a w[1] w[0] b sub2
+X5b w[1] w[0] b sub2
+X5c w[1] w[0] b sub2
+X6a c[1] b sub1
+X6b c[0] b sub1
+X7a d[0] b sub1
+X7b d[1] b sub1
+X8a s b sub1
+X8b s b sub1
+X9a x[3] b sub1
+X9b x[3] b sub1
+.ends

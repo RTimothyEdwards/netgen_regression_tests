@@ -1,0 +1,13 @@
+* Instances at the top level of the file, after the definition of the
+* subcircuit they instance.  The last subcircuit ("buf") contains only
+* subcircuit instances.
+.subckt inv a y vdd vss
+M1 y a vdd vdd pfet w=2u l=0.15u
+M2 y a vss vss nfet w=1u l=0.15u
+.ends
+.subckt buf a y vdd vss
+X1 a m vdd vss inv
+X2 m y vdd vss inv
+.ends
+X1 in mid vdd vss buf
+X2 mid out vdd vss buf

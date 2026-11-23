@@ -1,0 +1,14 @@
+* Subcircuits and devices to be written by "writenet spice".  The last
+* instance in "top" has no properties.
+.subckt inv a y vdd vss
+M1 y a vdd vdd pfet w=2u l=0.15u
+M2 y a vss vss nfet w=1u l=0.15u
+.ends
+
+.subckt top in out vdd vss
+X1 in mid vdd vss inv
+R1 out n1 1k
+C1 n1 vss 10f
+R2 n1 n2 rpoly w=1u l=10u
+X2 mid out vdd vss inv
+.ends

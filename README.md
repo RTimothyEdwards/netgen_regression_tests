@@ -110,15 +110,19 @@ pins/                 Pin matching
 results/              Final result reported by "lvs"
     net_mismatch_message/  A net mismatch is reported as such
     pin_mismatch_message/  A pin-only mismatch is reported as such
-spice/                SPICE netlist reading
+spice/                SPICE netlist reading and writing
     equals_spacing/   Spaces around "=" in properties and parameters
     include_scope/    Files read with .include are part of the including file
     source_instance_names/  Instance names of V, I, and E sources
+    top_level_instances/  Instances outside of any subcircuit
     unresolved_expression/  Unresolved expressions reported as such
+    write_spice/      Writing a netlist with "writenet spice"
 startup/              Starting netgen
     version_option/   "netgen --version" prints the version number
 verilog/              Verilog netlists
     cdl_escaped_bus/  Verilog instance of a CDL cell (escaped names, <> buses)
+    generate_loop/    Instances made by generate "for" loops
+    instance_arrays/  Instance arrays and buses declared in either direction
     parameters/       Parameters passed through verilog modules
     sized_constants/  Parameter values given as based constants (32'd10)
     unordered_bus_pins/  Bus connected to a cell with unordered bus pins
