@@ -123,6 +123,7 @@ verilog/              Verilog netlists
     cdl_escaped_bus/  Verilog instance of a CDL cell (escaped names, <> buses)
     generate_loop/    Instances made by generate "for" loops
     instance_arrays/  Instance arrays and buses declared in either direction
+    instance_bundles/  Wire bundles connected to instances and instance arrays
     parameters/       Parameters passed through verilog modules
     sized_constants/  Parameter values given as based constants (32'd10)
     unordered_bus_pins/  Bus connected to a cell with unordered bus pins
