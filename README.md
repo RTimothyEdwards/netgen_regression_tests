@@ -131,4 +131,5 @@ yosys/                Using yosys to elaborate verilog
     elaborate_copies/  Copies made by yosys for each set of parameters
     elaborate_hierarchy/  Module elaborated by yosys within a hierarchy
     elaborate_proc/   The netgen::yosys_elaborate procedure
+    use_yosys/        Requiring yosys ("use_yosys always", "lvs -yosys")
 ```
